@@ -1,9 +1,15 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 )
 
 func main() {
-	fmt.Println("Hello, World!")
+	mux := http.NewServeMux()
+	s := http.Server{
+		Handler: mux,
+		Addr: ":8080",
+	}
+	log.Fatal(s.ListenAndServe())
 }
